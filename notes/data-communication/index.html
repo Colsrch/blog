@@ -1,0 +1,604 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>数据通信笔记：数据通信 - Colsrch的小破站</title>
+
+  
+    <meta name="description" content="TCP &#x2F; IPTCP&#x2F;IP 封装  报文首部  源端口和目的端口，各占 2 个字节，分别写入源端口和目的端口； 序号，占 4 个字节, TCP 连接中传送的字节流中的每个字节都按顺序编号。例如，一段报文的序号字段值是 301 ，而携带的数据共有 100 字段，显然下一个报文段（如果还有的话）的数据序号应该从 401 开始； 确认号，占 4 个字节，是期望收到对方下一个报文的第一个数据字">
+<meta property="og:type" content="website">
+<meta property="og:title" content="数据通信">
+<meta property="og:url" content="https://colsrch.cn/notes/data-communication/">
+<meta property="og:site_name" content="Colsrch的小破站">
+<meta property="og:description" content="TCP &#x2F; IPTCP&#x2F;IP 封装  报文首部  源端口和目的端口，各占 2 个字节，分别写入源端口和目的端口； 序号，占 4 个字节, TCP 连接中传送的字节流中的每个字节都按顺序编号。例如，一段报文的序号字段值是 301 ，而携带的数据共有 100 字段，显然下一个报文段（如果还有的话）的数据序号应该从 401 开始； 确认号，占 4 个字节，是期望收到对方下一个报文的第一个数据字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2022/09/10/631b8094a54f1.png">
+<meta property="og:image" content="https://bu.dusays.com/2022/09/10/631b80845c36e.png">
+<meta property="og:image" content="https://bu.dusays.com/2022/09/10/631b6fb3d17b0.gif">
+<meta property="og:image" content="https://bu.dusays.com/2022/09/10/631b6fb3b0e59.gif">
+<meta property="article:published_time" content="2021-04-28T06:08:13.000Z">
+<meta property="article:modified_time" content="2024-03-12T09:58:18.000Z">
+<meta property="article:author" content="Colsrch">
+<meta property="article:tag" content="Colsrch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bu.dusays.com/2022/09/10/631b8094a54f1.png">
+  
+  
+  
+  <meta name="keywords" content="Colsrch">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Colsrch的小破站" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://o.static.colsrch.cn/image/favicon.png">
+  
+
+  
+
+  <link href="https://o.static.colsrch.cn/font/FZFWZhuZiAYuanJR.OTF" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Dosis-Medium.ttf" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Sxls.ttf" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="l_body s:aa index tech" id="start" layout="docs" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/notes/data-communication/"><div class="main" ff="title">数据通信笔记</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/notes/data-communication/" placeholder="在数据通信笔记中搜索..."></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item active" title="知识库" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/fcircle/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper post-card"><div class="widget-header dis-select"><span class="name">更多：笔记</span></div><div class="widget-body"><a class="item wiki" href="/notes/graia/"><span class="title">Graia API</span></a><a class="item wiki" href="/notes/kvm/"><span class="title">KVM 学习笔记</span></a><a class="item wiki" href="/notes/mysql/"><span class="title">MySQL 学习笔记</span></a><a class="item wiki" href="/notes/openstack/"><span class="title">OpenStack 搭建笔记</span></a><a class="item wiki" href="/notes/python/"><span class="title">Python 学习笔记</span></a><a class="item wiki" href="/notes/windows/"><span class="title">Windows - 笔记</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">文档</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/notes/data-communication/">数据通信笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2024-03-12T09:58:18.000Z">2024-03-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>数据通信</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="TCP-x2F-IP"><a href="#TCP-x2F-IP" class="headerlink" title="TCP &#x2F; IP"></a>TCP &#x2F; IP</h2><details class="tag-plugin colorful folding" ><summary><span>TCP/IP 封装</span></summary><div class="body"><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2022/09/10/631b8094a54f1.png"></p></div></details>
+
+<h3 id="报文首部"><a href="#报文首部" class="headerlink" title="报文首部"></a>报文首部</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2022/09/10/631b80845c36e.png"></p>
+<ol>
+<li>源端口和目的端口，各占 2 个字节，分别写入源端口和目的端口；</li>
+<li>序号，占 4 个字节, <u>TCP 连接中传送的字节流中的每个字节都按顺序编号</u>。例如，一段报文的序号字段值是 301 ，而携带的数据共有 100 字段，显然下一个报文段（如果还有的话）的数据序号应该从 401 开始；</li>
+<li>确认号，占 4 个字节，<u>是期望收到对方下一个报文的第一个数据字节的序号</u>。例如, B 收到了 A 发送过来的报文，其序列号字段是 501，而数据长度是 200 字节，<u>这表明 B 正确的收到了 A 发送的到序号 700 为止的数据</u>。因此, B 期望收到 A 的下一个数据序号是 701，于是 B 在发送给 A 的确认报文段中把确认号置为 701 ；</li>
+<li>数据偏移，占 4 位，它指出 TCP 报文的数据距离 TCP 报文段的起始处有多远；</li>
+<li>保留，占 6 位，保留今后使用，但目前应都位 0；</li>
+<li>紧急 URG，当 URG &#x3D; 1，表明紧急指针字段有效。告诉系统此报文段中有紧急数据；</li>
+<li>确认 ACK，仅当 ACK &#x3D; 1时，确认号字段才有效。TCP 规定，在连接建立后所有报文的传输都必须把 ACK 置 1；</li>
+<li>推送 PSH，当两个应用进程进行交互式通信时，有时在一端的应用进程希望在键入一个命令后立即就能收到对方的响应，这时候就将 PSH &#x3D; 1；</li>
+<li>复位 RST，当 RST &#x3D; 1，表明 TCP 连接中出现严重差错，必须释放连接，然后再重新建立连接；</li>
+<li>同步 SYN，在连接建立时用来同步序号。当 SYN &#x3D; 1, ACK &#x3D; 0，表明是连接请求报文，若同意连接，则响应报文中应该使 SYN &#x3D; 1, ACK &#x3D; 1；</li>
+<li>终止 FIN，用来释放连接。当 FIN &#x3D; 1，表明此报文的发送方的数据已经发送完毕，并且要求释放；</li>
+<li>窗口，占 2 字节，指的是通知接收方，发送本报文你需要有多大的空间来接受；</li>
+<li>检验和，占 2 字节，校验首部和数据这两部分；</li>
+<li>紧急指针，占 2 字节，指出本报文段中的紧急数据的字节数；</li>
+<li>选项，长度可变，定义一些其他的可选的参数。</li>
+</ol>
+<h3 id="三次握手（建立连接）"><a href="#三次握手（建立连接）" class="headerlink" title="三次握手（建立连接）"></a>三次握手（建立连接）</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2022/09/10/631b6fb3d17b0.gif"></p>
+<blockquote>
+<p>最开始的时候客户端和服务器都是处于 CLOSED 状态。主动打开连接的为客户端，被动打开连接的是服务器。</p>
+</blockquote>
+<p>TCP 服务器进程先创建传输控制块 TCB，时刻 LISTEN（监听）客户端进程的连接请求。</p>
+<ol>
+<li>TCP 客户端进程也是先创建传输控制块 TCB，然后向服务器发出连接请求报文，这时报文首部中的标识号 SYN &#x3D; 1，同时选择一个初始序列号 seq &#x3D; <strong>x</strong>，此时，TCP 客户端进程进入 SYN-SENT（同步已发送状态），<u>TCP 规定，SYN 报文段（ SYN = 1 的报文段）不能携带数据，但需要消耗一个序号</u>。 <figure class="highlight txt"><figcaption><span>client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SYN = 1 ACK = 0  seq = x</span><br></pre></td></tr></table></figure></li>
+<li>TCP 服务器收到请求报文后，如果同意连接，则发出确认报文。确认报文中应该 ACK &#x3D; 1，SYN &#x3D; 1，确认号是 ack &#x3D; x + 1，同时也要为自己初始化一个序列号 seq &#x3D; <strong>y</strong>，此时，TCP 服务器进程进入了 SYN-RCVD（同步收到）状态。<u>这个报文也不能携带数据，但是同样要消耗一个序号</u>。 <figure class="highlight txt"><figcaption><span>server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SYN = 1 ACK = 1  seq = y ack = x + 1</span><br></pre></td></tr></table></figure></li>
+<li>TCP 客户端进程收到确认后，还要向服务器给出确认。确认报文的 ACK &#x3D; 1, ack &#x3D; y + 1，自己的序列号 seq &#x3D; x + 1，此时，TCP 连接建立，客户端进程进入 ESTABLISHED（已建立连接）状态。<u>TCP 规定，ACK 报文段可以携带数据，但是如果不携带数据则不消耗序号</u>。 <figure class="highlight txt"><figcaption><span>client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ACK = 1  ack = y + 1</span><br></pre></td></tr></table></figure></li>
+<li>当服务器收到客户端的确认后也进入 ESTABLISHED 状态，此后双方就可以开始通信了。</li>
+</ol>
+<h4 id="为什么TCP客户端最后还要发送一次确认呢？"><a href="#为什么TCP客户端最后还要发送一次确认呢？" class="headerlink" title="为什么TCP客户端最后还要发送一次确认呢？"></a>为什么TCP客户端最后还要发送一次确认呢？</h4><blockquote>
+<p>主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。</p>
+<p>如果使用的是两次握手建立连接，假设有这样一种场景，<u>客户端发送了第一个请求连接并且没有丢失，只是因为在网络结点中滞留的时间太长了</u>，由于 TCP 的客户端迟迟没有收到确认报文，以为服务器没有收到，此时重新向服务器发送这条报文，此后客户端和服务器经过两次握手完成连接，传输数据，然后关闭连接。此时此前滞留的那一次请求连接，网络通畅了到达了服务器，这个报文本该是失效的，但是，两次握手的机制将会让客户端和服务器再次建立连接，这将导致不必要的错误和资源的浪费。</p>
+<p>如果采用的是三次握手，就算是那一次失效的报文传送过来了，服务端接受到了那条失效报文并且回复了确认报文，但是客户端不会再次发出确认。由于服务器收不到确认，就知道客户端并没有请求连接。</p>
+</blockquote>
+<h3 id="四次挥手（释放连接）"><a href="#四次挥手（释放连接）" class="headerlink" title="四次挥手（释放连接）"></a>四次挥手（释放连接）</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2022/09/10/631b6fb3b0e59.gif"></p>
+<blockquote>
+<p>数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于 ESTABLISHED 状态，然后客户端主动关闭，服务器被动关闭。</p>
+</blockquote>
+<ol>
+<li>客户端进程发出连接释放报文，并且停止发送数据。释放数据报文首部, FIN &#x3D; 1，其序列号为 seq &#x3D; u（等于前面已经传送过来的数据的最后一个字节的序号加 1 ），此时，客户端进入 FIN-WAIT-1 （终止等待 1）状态。 <u>TCP 规定, FIN 报文段即使不携带数据，也要消耗一个序号</u>。 <figure class="highlight txt"><figcaption><span>client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIN = 1 seq = u</span><br></pre></td></tr></table></figure></li>
+<li>服务器收到连接释放报文，发出确认报文, ACK &#x3D; 1, ack &#x3D; u + 1，并且带上自己的序列号 seq &#x3D; v，此时，服务端就进入了 CLOSE-WAIT （关闭等待）状态。<u>TCP 服务器通知高层的应用进程，客户端向服务器的方向就释放了，这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受</u>。<u>这个状态还要持续一段时间，也就是整个 CLOSE-WAIT 状态持续的时间。</u></li>
+<li>客户端收到服务器的确认请求后，此时，客户端就进入 FIN-WAIT-2 （终止等待2）状态，等待服务器发送连接释放报文<u>（在这之前还需要接受服务器发送的最后的数据）。</u> <figure class="highlight txt"><figcaption><span>server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ACK = 1 ack = u + 1</span><br></pre></td></tr></table></figure></li>
+<li>服务器将最后的数据发送完毕后，就向客户端发送连接释放报文, FIN &#x3D; 1, ack &#x3D; u + 1，由于在半关闭状态，服务器很可能又发送了一些数据，假定此时的序列号为 seq &#x3D; w，此时，服务器就进入了 LAST-ACK （最后确认）状态，等待客户端的确认。 <figure class="highlight txt"><figcaption><span>server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIN = 1 seq = w ack = u + 1</span><br></pre></td></tr></table></figure></li>
+<li>客户端收到服务器的连接释放报文后，必须发出确认, ACK &#x3D; 1, ack &#x3D; w + 1，而自己的序列号是 seq &#x3D; u + 1，此时，客户端就进入了 TIME-WAIT （时间等待）状态。<u>注意此时 TCP 连接还没有释放，必须经过 2*MSL（最长报文段寿命）的时间后，当客户端撤销相应的 TCB 后，才进入 CLOSED 状态。</u> <figure class="highlight txt"><figcaption><span>client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ACK = 1 ack = w + 1</span><br></pre></td></tr></table></figure></li>
+<li>服务器只要收到了客户端发出的确认，立即进入 CLOSED 状态。同样，撤销 TCB 后，就结束了这次的 TCP 连接。<u>可以看到，服务器结束 TCP 连接的时间要比客户端早一些。</u></li>
+</ol>
+<h4 id="为什么客户端最后还要等待2MSL？"><a href="#为什么客户端最后还要等待2MSL？" class="headerlink" title="为什么客户端最后还要等待2MSL？"></a>为什么客户端最后还要等待2MSL？</h4><blockquote>
+<p>MSL（Maximum Segment Lifetime），TCP 允许不同的实现可以设置不同的 MSL 值。</p>
+<p>第一，保证客户端发送的最后一个 ACK 报文能够到达服务器，因为这个 ACK 报文可能丢失，<u>站在服务器的角度看来，我已经发送了 FIN + ACK 报文请求断开了，客户端还没有给我回应，应该是我发送的请求断开报文它没有收到，于是服务器又会重新发送一次</u>，而客户端就能在这个 2 MSL 时间段内收到这个重传的报文，接着给出回应报文，并且会重启 2 MSL 计时器。</p>
+<p>第二，防止类似与“三次握手”中提到了的“已经失效的连接请求报文段”出现在本连接中。客户端发送完最后一个确认报文后，在这个 2 MSL 时间中，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失。这样新的连接中不会出现旧连接的请求报文。</p>
+</blockquote>
+<h4 id="为什么建立连接是三次握手，关闭连接确是四次挥手呢？"><a href="#为什么建立连接是三次握手，关闭连接确是四次挥手呢？" class="headerlink" title="为什么建立连接是三次握手，关闭连接确是四次挥手呢？"></a>为什么建立连接是三次握手，关闭连接确是四次挥手呢？</h4><blockquote>
+<p>建立连接的时候， 服务器在 LISTEN 状态下，收到建立连接请求的 SYN 报文后，把 ACK 和 SYN 放在一个报文里发送给客户端。<br>而关闭连接时，服务器收到对方的 FIN 报文时，仅仅表示对方不再发送数据了但是还能接收数据，而自己也未必全部数据都发送给对方了，所以己方可以立即关闭，也可以发送一些数据给对方后，再发送 FIN 报文给对方来表示同意现在关闭连接，因此，己方 ACK 和 FIN 一般都会分开发送，从而导致多了一次。</p>
+</blockquote>
+<h4 id="如果已经建立了连接，但是客户端突然出现故障了怎么办？"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办？"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办？</h4><blockquote>
+<p>TCP 还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为 2 小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔 75 秒发送一次。若一连发送 10 个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
+</blockquote>
+</article>
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body artalk'>
+      
+
+<div id="artalk_container"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">探索</span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://madoka.colsrch.cn">Madoka</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html">开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/friends/">友链</a><a href="/about/#comments">留言板</a></div><div class="sitemap-group"><span class="fs15">关于</span><a href="/about/">关于本站</a><a href="/privacy/">隐私政策</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Colsrch">GitHub</a></div></div><div class="text"><p>Copyright © 2020-2024 Colsrch. All Rights Reserved.<br>本站使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://xaoxuu.com/wiki/stellar">Stellar</a> 作为主题 | 由 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/">Hexo</a> 强力驱动 | 由 腾讯云 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cdn">CDN</a> 分发<br>ICP 备案 &#x2F; 许可证号：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">赣 ICP 备 2020013616 号 - 2</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.beian.gov.cn/">赣公网安备 36082102000083 号</a></p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-x2F-IP"><span class="toc-text">TCP &#x2F; IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E9%A6%96%E9%83%A8"><span class="toc-text">报文首部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">三次握手（建立连接）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88TCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%80%E5%90%8E%E8%BF%98%E8%A6%81%E5%8F%91%E9%80%81%E4%B8%80%E6%AC%A1%E7%A1%AE%E8%AE%A4%E5%91%A2%EF%BC%9F"><span class="toc-text">为什么TCP客户端最后还要发送一次确认呢？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">四次挥手（释放连接）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%80%E5%90%8E%E8%BF%98%E8%A6%81%E7%AD%89%E5%BE%852MSL%EF%BC%9F"><span class="toc-text">为什么客户端最后还要等待2MSL？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E7%A1%AE%E6%98%AF%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E5%91%A2%EF%BC%9F"><span class="toc-text">为什么建立连接是三次握手，关闭连接确是四次挥手呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%B7%B2%E7%BB%8F%E5%BB%BA%E7%AB%8B%E4%BA%86%E8%BF%9E%E6%8E%A5%EF%BC%8C%E4%BD%86%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AA%81%E7%84%B6%E5%87%BA%E7%8E%B0%E6%95%85%E9%9A%9C%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-text">如果已经建立了连接，但是客户端突然出现故障了怎么办？</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function load_artalk() {
+    if (!document.querySelectorAll("#artalk_container")[0]) return;
+    utils.css('https://o.static.colsrch.cn/artalk/Artalk.css');
+    utils.js('https://o.static.colsrch.cn/artalk/Artalk.js', {defer: true}).then(function () {
+      const el = document.getElementById("artalk_container");
+      var path = el.getAttribute('comment_id');
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var artalk = new Artalk({
+        el: '#artalk_container',
+        pageKey: path,
+        pageTitle: '数据通信',
+        server: 'https://artalk.colsrch.cn',
+        placeholder: '自古评论出人才~',
+        site: 'Colsrch的小破站',
+        darkMode: 'auto',
+        pvEl: '#artalk_visitors',
+        
+        imgUploader: function(file) {
+          let headers = new Headers();
+          headers.set('Accept', 'application/json');
+          
+            headers.set('Authorization', 'Bearer 270|FjBcVa7CZ2nFsU9LPg7lN8YbcM29hlGiE8pwtLVq')
+          
+          let formData = new FormData();
+          formData.append('file', file);
+          return fetch('https://7bu.top/api/v1/upload',{
+            method: 'POST',
+            body: formData,
+            headers: headers
+            }).then((resp) => resp.json())
+              .then((resp) => resp.data.links.url)
+        },
+        
+        })
+      });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    load_artalk();
+  });
+</script>
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

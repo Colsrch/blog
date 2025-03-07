@@ -1,0 +1,774 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>OpenVPN搭建教程 - Colsrch的小破站</title>
+
+  
+    <meta name="description" content="如何搭建和配置OpenVPN服务端及客户端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenVPN搭建教程">
+<meta property="og:url" content="https://colsrch.cn/posts/c5ed2e3f/">
+<meta property="og:site_name" content="Colsrch的小破站">
+<meta property="og:description" content="如何搭建和配置OpenVPN服务端及客户端">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2022/03/25/8f80a869190df.png">
+<meta property="article:published_time" content="2022-03-24T08:08:39.000Z">
+<meta property="article:modified_time" content="2024-03-14T12:20:25.000Z">
+<meta property="article:author" content="Colsrch">
+<meta property="article:tag" content="OpenVPN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bu.dusays.com/2022/03/25/8f80a869190df.png">
+  
+  
+  
+  <meta name="keywords" content="OpenVPN">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Colsrch的小破站" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://o.static.colsrch.cn/image/favicon.png">
+  
+
+  
+
+  <link href="https://o.static.colsrch.cn/font/FZFWZhuZiAYuanJR.OTF" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Dosis-Medium.ttf" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Sxls.ttf" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://bu.dusays.com/2021/09/26/71936251686ac.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Colsrch的小破站</div><div class="sub normal cap">主题迁移中</div><div class="sub hover cap" style="opacity:0"> colsrch.cn</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="知识库" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/fcircle/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span><a class="cap-action" id="rss" title="Subscribe" href="/atom.xml"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19q0-.825.588-1.412T5 17q.825 0 1.413.588T7 19q0 .825-.587 1.413T5 21m13.5 0q-.65 0-1.088-.475T16.9 19.4q-.275-2.425-1.312-4.537T12.9 11.1q-1.65-1.65-3.762-2.687T4.6 7.1q-.65-.075-1.125-.512T3 5.5q0-.65.45-1.062t1.075-.363q3.075.275 5.763 1.563t4.737 3.337q2.05 2.05 3.338 4.738t1.562 5.762q.05.625-.363 1.075T18.5 21m-6 0q-.625 0-1.075-.437T10.85 19.5q-.225-1.225-.787-2.262T8.65 15.35q-.85-.85-1.888-1.412T4.5 13.15q-.625-.125-1.062-.575T3 11.5q0-.65.45-1.075t1.075-.325q1.825.25 3.413 1.063t2.837 2.062q1.25 1.25 2.063 2.838t1.062 3.412q.1.625-.325 1.075T12.5 21"/></svg></a></div><div class="widget-body fs14"><a class="item title" href="/posts/c5ed2e3f/"><span class="title">OpenVPN搭建教程</span></a><a class="item title" href="/posts/caff8000/"><span class="title">Git 常用命令</span></a><a class="item title" href="/posts/454fe87a/"><span class="title">Hexo 博客搭建教程</span></a><a class="item title" href="/posts/a5b8d333/"><span class="title">Hexo常用指令</span></a><a class="item title" href="/posts/df35c5b1/"><span class="title">Coding持续集成实现Hexo自动化部署</span></a><a class="item title" href="/posts/986192a4/"><span class="title">C语言神秘程序</span></a><a class="item title" href="/posts/5fe8cd16/"><span class="title">VS2019 及其他版本序列号及下载地址</span></a><a class="item title" href="/posts/da1d5c8b/"><span class="title">LeanCLoud定时唤醒失败的解决方案</span></a><a class="item title" href="/posts/32c8ba21/"><span class="title">博客访问速度提升：使用hexo-offline-popup插件</span></a><a class="item title" href="/posts/a058b502/"><span class="title">Hexo 添加说说页面</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></div>
+<div class="flex-row" id="post-meta"><a class="author" href="/author/colsrch/">Colsrch</a><span class="sep"></span><span class="text created"><time datetime="2022-03-24T08:08:39.000Z">2022-03-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-14T12:20:25.000Z">2024-03-14</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>OpenVPN搭建教程</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>虚拟专用网络（VPN）允许您遍历不受信任的网络，就像在专用网络上一样。当您连接到不受信任的网络（例如酒店或咖啡店的 WiFi）时，它使您可以从智能手机或笔记本电脑，安全地访问 Internet。</p>
+<p>OpenVPN 是功能齐全的，开源的传输层安全性（TLS）VPN 解决方案，可适应多种配置。</p>
+<h2 id="使用-Docker-快速部署服务端"><a href="#使用-Docker-快速部署服务端" class="headerlink" title="使用 Docker 快速部署服务端"></a>使用 Docker 快速部署服务端</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先创建一个目录，用来存放 openvpn 相关文件。之后在目录内执行下面这两条命令</p>
+<figure class="highlight shell"><figcaption><span>生成服务端配置文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v $(pwd)/conf:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://&lt;这里填写服务端公网ip&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><figcaption><span>创建CA，配置证书</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v $(pwd)/conf:/etc/openvpn --log-driver=none --rm -it kylemanna/openvpn ovpn_initpki</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="yellow"><div class="title">注意</div><div class="body"><p>创建 CA 时设置的密码在后续创建客户端证书时需要用到</p></div></div>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="title">说明</div><div class="body"><p>默认生成的配置文件适用于本地局域网环境，即客户机无法访问外网，需要借助服务机连接外网（未实践，可能有误）</p></div></div>
+
+<p>由于默认生成的配置文件会导致本机网络无法使用，这里我们需要对其进行修改：将 <code>$(pwd)/conf/openvpn.conf</code> 中的内容替换</p>
+<figure class="highlight plaintext"><figcaption><span>openvpn.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server 10.8.0.0 255.255.255.0</span><br><span class="line">port 1194</span><br><span class="line">proto udp</span><br><span class="line">dev tun0</span><br><span class="line">verb 3</span><br><span class="line">key /etc/openvpn/pki/private/&lt;这里保留原来的文件名&gt;.key</span><br><span class="line">ca /etc/openvpn/pki/ca.crt</span><br><span class="line">cert /etc/openvpn/pki/issued/&lt;这里保留原来的文件名&gt;.crt</span><br><span class="line">dh /etc/openvpn/pki/dh.pem</span><br><span class="line">tls-auth /etc/openvpn/pki/ta.key</span><br><span class="line">key-direction 0</span><br><span class="line">keepalive 10 120</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">status /tmp/openvpn-status.log</span><br><span class="line">client-to-client</span><br><span class="line">user nobody</span><br><span class="line">group nogroup</span><br><span class="line">comp-lzo no</span><br><span class="line">push &quot;route 10.8.0.0 255.255.255.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>10.8.0.0</code> 为 vpn 连接后的网段，可以根据自己需要修改子网和掩码。<code>server</code> 和 <code>push</code> 配置项需要保持一致</p>
+<p>若需要让每个客户端每次连接的 ip 不变，可以往该配置文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig-pool-persist ipp.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>提供两种方式启动，根据自己喜好选择。</p>
+<div class="tag-plugin tabs"id="tab_1"><div class="nav-tabs"><div class="tab active"><a href="#tab_1-1">docker</a></div><div class="tab"><a href="#tab_1-2">docker-compose.yaml</a></div></div><div class="tab-content"><div class="tab-pane active" id="tab_1-1"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart always --cap-add NET_ADMIN --name openvpn -p 1194:1194/udp --privileged -v $(pwd)/conf:/etc/openvpn kylemanna/openvpn</span><br></pre></td></tr></table></figure>
+
+<!-- endtab --></div><div class="tab-pane" id="tab_1-2"><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">openvpn:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">kylemanna/openvpn</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">cap_add:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">NET_ADMIN</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">openvpn</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">1194</span><span class="string">:1194/udp</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf:/etc/openvpn</span></span><br></pre></td></tr></table></figure>
+
+<!-- endtab --></div></div></div>
+
+<h3 id="生成客户端配置"><a href="#生成客户端配置" class="headerlink" title="生成客户端配置"></a>生成客户端配置</h3><p>创建客户端证书，<code>$client_name</code> 替换为需要的名字，需要输入 CA 密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v $(pwd)/conf:/etc/openvpn --log-driver=none --rm -it kylemanna/openvpn easyrsa build-client-full $client_name nopass</span><br></pre></td></tr></table></figure>
+
+<p>接下来创建一个目录将下列文件复制过去</p>
+<ul>
+<li><code>conf/pki/ca.crt</code></li>
+<li><code>conf/pki/ta.key</code></li>
+<li><code>conf/pki/issued/$client_name.crt</code>: 即 <code>client.crt</code></li>
+<li><code>conf/pki/private/$client_name.key</code>: 即 <code>client.key</code></li>
+</ul>
+<p>接下来按照 <a href="#%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5">配置客户端连接</a> 进行配置。</p>
+<div class="tag-plugin colorful note" color="cyan"><div class="body"><p>下面介绍手动部署方法</p></div></div>
+
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><ul>
+<li>使用具有 sudo 非 root 用户进行搭建，下文称为 <code>OpenVPN 服务器</code></li>
+</ul>
+<div class="tag-plugin colorful note" color="yellow"><div class="title">注意</div><div class="body"><p>出于安全考虑，不推荐你直接使用 root 用户进行搭建。</p></div></div>
+<psw>你要想用也拦不住你</psw>
+
+<ul>
+<li>使用单独的一台服务器作为专用的证书颁发机构（CA），下文称为 <code>CA服务器</code></li>
+</ul>
+<div class="tag-plugin colorful note" color="yellow"><div class="title">注意</div><div class="body"><p>虽然从技术上讲可以将你的 OpenVPN 服务器或本地计算机作为 CA，但不建议这样做，因为它可能会使你的 VPN 出现一些安全漏洞。根据 OpenVPN 官方文档，你应该将 CA 放置在专用于导入和签名证书请求的独立计算机上。</p></div></div>
+<psw>都说了，你要想用咱也拦不住你</psw>
+
+<h2 id="安装-OpenVPN-和-Easy-RSA"><a href="#安装-OpenVPN-和-Easy-RSA" class="headerlink" title="安装 OpenVPN 和 Easy-RSA"></a>安装 OpenVPN 和 Easy-RSA</h2><p>首先需要安装 OpenVPN 和 Easy-RSA。</p>
+<p>Easy-RSA 是一种公钥基础结构（PKI）管理工具，你将在 OpenVPN Server 上使用该工具生成证书请求，然后在 CA Server 上进行验证和签名。</p>
+<h3 id="CentOS-8-x2F-Rocky-8"><a href="#CentOS-8-x2F-Rocky-8" class="headerlink" title="CentOS 8 &#x2F; Rocky 8"></a>CentOS 8 &#x2F; Rocky 8</h3><p>CentOS 8 和 Rocky 8 默认不提供 OpenVPN 和 Easy-RSA，因此你需要启用 EPEL 存储库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install epel-release</span><br><span class="line">sudo dnf install openvpn easy-rsa</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>Ubuntu 的默认仓库就已经有 OpenVPN 的包了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install openvpn easy-rsa</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-easy-rsa"><a href="#配置-easy-rsa" class="headerlink" title="配置 easy-rsa"></a>配置 easy-rsa</h3><p>安装完成后，你需要以非 root 用户身份在 OpenVPN 服务器上创建一个新目录:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/easy-rsa</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="body"><p>该目录位置可以自定义，此处假设目录位置为<code>~</code></p></div></div>
+
+<p>现在，你需要从 easy-rsa 创建一个符号连接，以便将软件包安装到你刚刚创建的 easy-rsa 目录中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/share/easy-rsa/3/* ~/easy-rsa/</span><br></pre></td></tr></table></figure>
+
+<p>最后，确保目录所有者是你当前使用的用户，并限制对该目录的访问:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chown</span> openvpn ~/easy-rsa</span><br><span class="line"><span class="built_in">chmod</span> 700 ~/easy-rsa</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="body"><p>假设你使用的是openvpn用户</p></div></div>
+
+<h2 id="为-OpenVPN-创建-PKI"><a href="#为-OpenVPN-创建-PKI" class="headerlink" title="为 OpenVPN 创建 PKI"></a>为 OpenVPN 创建 PKI</h2><p>要在 OpenVPN 服务器上构建 PKI 目录，你需要使用一些默认值填充 vars 文件。</p>
+<p>进入 easy-rsa 目录，然后创建和编辑 vars 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi vars</span><br></pre></td></tr></table></figure>
+
+<p>打开文件后，粘贴下面两行:</p>
+<figure class="highlight txt"><figcaption><span>~/easy-rsa/vars</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set_var EASYRSA_ALGO &quot;ec&quot;</span><br><span class="line">set_var EASYRSA_DIGEST &quot;sha512&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这些配置能够确保将你的私钥和证书请求配置为使用现代化的椭圆曲线密码术（ECC）为客户端和 OpenVPN 服务器生成密钥和安全签名。</p>
+<p>填充 vars 文件后，即可继续创建 PKI 目录。</p>
+<figure class="highlight bash"><figcaption><span>~/easy-rsa</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easyrsa init-pki</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-CA-服务器"><a href="#配置-CA-服务器" class="headerlink" title="配置 CA 服务器"></a>配置 CA 服务器</h2><p>先按照上面的步骤安装 <code>easy-rsa</code> ，然后配置 <code>easy-rsa</code> 和 创建 PKI</p>
+<div class="tag-plugin colorful note" color="cyan"><div class="title">说明</div><div class="body"><p>如果你 CA 服务器和 OpenVPN 服务器一致，则直接执行下面的命令即可。</p></div></div>
+
+<p>接下来执行该命令创建 CA 证书:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">./easyrsa build-ca</span><br></pre></td></tr></table></figure>
+
+<p>首先会提示设置密码，用于 ca 对之后生成的 server 和 client 证书签名时使用，然后会提示设置 Country Name, State or Province Name, Locality Name, Organization Name, Organizational Unit Name, Common Name, Email Address, 可以键入回车使用默认的，也可以手动更改</p>
+<h2 id="创建-Diffie-Hellman"><a href="#创建-Diffie-Hellman" class="headerlink" title="创建 Diffie-Hellman"></a>创建 Diffie-Hellman</h2><p>在 OpenVPN 服务端执行该命令创建 Diffie-Hellman, 完成后将其复制到 <code>/etc/openvpn/server</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">./easyrsa gen-dh</span><br><span class="line">sudo <span class="built_in">cp</span> pki/dh.pem /etc/openvpn/server</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间可能会有点长，请耐心等待。</p>
+</blockquote>
+<h2 id="创建一个OpenVPN服务器证书请求和私钥"><a href="#创建一个OpenVPN服务器证书请求和私钥" class="headerlink" title="创建一个OpenVPN服务器证书请求和私钥"></a>创建一个OpenVPN服务器证书请求和私钥</h2><p>现在，通过使用 gen-req 选项调用 easyrsa，后跟机器的通用名称（CN）。CN可以是你喜欢的任何内容，但最好是具有一定的描述性。在这里，OpenVPN Server 的 CN 将设置为 server。后面还需要包括 nopass 选项。否则，将对请求的文件进行密码保护，这可能会在以后导致权限问题。</p>
+<div class="tag-plugin colorful note" color="yellow"><div class="title">注意</div><div class="body"><p>如果你在这里选择 server 以外的名称，则必须调整以下一些内容。例如，将生成的文件复制到 &#x2F;etc&#x2F;openvpn&#x2F;server 目录时，你必须替换正确的名称。你还必须修改 &#x2F;etc&#x2F;openvpn&#x2F;server&#x2F;server.conf 文件，以指向正确的 .crt 和 .key 文件</p></div></div>
+
+<figure class="highlight bash"><figcaption><span>~/easy-rsa</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easyrsa gen-req server nopass</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Common Name (eg: your user, host, or server name) [server]:  # 这里直接回车</span><br><span class="line"></span><br><span class="line">Keypair and certificate request completed. Your files are:</span><br><span class="line">req: /home/sammy/easy-rsa/pki/reqs/server.req</span><br><span class="line">key: /home/sammy/easy-rsa/pki/private/server.key</span><br></pre></td></tr></table></figure>
+
+<p>这会为 OpenVPN 服务器创建一个 server.key 私钥和一个名为 server.req 的证书请求文件。将该密钥复制到 <code>/etc/openvpn/server</code> 目录:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> ~/easy-rsa/pki/private/server.key /etc/openvpn/server/</span><br></pre></td></tr></table></figure>
+
+<p>完成这些步骤后，你已经成功为您的 OpenVPN 服务器创建了私钥，并且生成了证书签名请求(req)。CSR 现在可以由你的 CA 签名了。</p>
+<h2 id="签署-OpenVPN-服务器的证书请求"><a href="#签署-OpenVPN-服务器的证书请求" class="headerlink" title="签署 OpenVPN 服务器的证书请求"></a>签署 OpenVPN 服务器的证书请求</h2><p>在 OpenVPN 服务器上，使用 scp 或其他传输方法将 server.req 证书请求复制到 CA 服务器以进行签名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/easy-rsa/pki/reqs/server.req ca_user@your_ca_server_ip:/tmp</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="title">说明</div><div class="body"><p>若你的 CA 服务器为 OpenVPN 服务器，则你无需复制证书请求，无需导入证书请求。直接运行下面的 sign-req 命令即可</p></div></div>
+
+<p>现在，以拥有 easy-rsa 目录的非 root 用户登录到 CA 服务器，使用 easyrsa 脚本导入证书请求:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">./easyrsa import-req /tmp/server.req server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. . .</span><br><span class="line">The request has been successfully imported with a short name of: server</span><br><span class="line">You may now use this name to perform signing operations on this request.</span><br></pre></td></tr></table></figure>
+
+<p>接下来运行带有 sign-req 选项的 easyrsa 脚本，然后时请求类型和公用名来对请求进行签名。请求类型可以是 client 或 server。由于我们在处理 OpenVPN 服务器的证书请求，因此请确保使用服务器请求类型(server):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easyrsa sign-req server server</span><br></pre></td></tr></table></figure>
+
+<p>然后系统将提示你确认请求是否来自受信任的来源。输入 yes，然后按 Enter 确认:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">You are about to sign the following certificate.</span><br><span class="line">Please check over the details shown below for accuracy. Note that this request</span><br><span class="line">has not been cryptographically verified. Please be sure it came from a trusted</span><br><span class="line">source or that you have verified the request checksum with the sender.</span><br><span class="line"></span><br><span class="line">Request subject, to be signed as a server certificate for 3650 days:</span><br><span class="line"></span><br><span class="line">subject=</span><br><span class="line">commonName = server</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Type the word &#x27;yes&#x27; to continue, or any other input to abort.</span><br><span class="line">Confirm request details: yes</span><br><span class="line">. . .</span><br><span class="line">Certificate created at: /home/ca/easy-rsa/pki/issued/server.crt</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="title">注意</div><div class="body"><p>如果你加密了 CA 私钥，则还会提示你输入密码</p></div></div>
+
+<p>完成配置后，请将 server.crt 和 ca.crt 文件从 CA 服务器复制到 OpenVPN 服务器:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp pki/issued/server.crt openvpn@your_vpn_server_ip:/tmp</span><br><span class="line">scp pki/ca.crt openvpn@your_vpn_server_ip:/tmp</span><br></pre></td></tr></table></figure>
+
+<p>现在回到 OpenVPN 服务器，将文件从 <code>/tmp</code> 复制到 <code>/etc/openvpn/server</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /tmp/&#123;server.crt,ca.crt&#125; /etc/openvpn/server</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置OpenVPN加密材料"><a href="#配置OpenVPN加密材料" class="headerlink" title="配置OpenVPN加密材料"></a>配置OpenVPN加密材料</h2><p>为了增加安全性，我们需要添加一个额外的共享密钥，服务器和所有客户端将使用该密钥，并将其与 OpenVPN 的 tls-crypt 指令一起使用。此选项用于混淆服务器和客户端最初相互连接时使用的 TLS 证书。 OpenVPN 服务器还使用它对传入的数据包进行快速检查: 如果数据包是使用预共享密钥签名的，则服务器会对其进行处理；如果未签名，则服务器知道它来自不受信任的来源，可以丢弃它而不必执行其他解密工作。</p>
+<p>此选项将帮助确保您的 OpenVPN 服务器能够应对未经身份验证的流量，端口扫描和拒绝服务攻击，这些攻击可能占用服务器资源。这也使识别 OpenVPN 网络流量变得更加困难。</p>
+<p>请在 OpenVPN 服务器上的 ~&#x2F;easy-rsa 目录中运行以下命令: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">openvpn --genkey --secret ta.key</span><br></pre></td></tr></table></figure>
+
+<p>然后将其复制到 <code>/etc/openvpn/server</code> 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> ta.key /etc/openvpn/server</span><br></pre></td></tr></table></figure>
+
+<p>到这里，服务端所需的文件都齐全了，现在可以为需要使用这个 VPN 的用户创建客户端证书和密钥文件了。</p>
+<h2 id="生成客户端证书和密钥对"><a href="#生成客户端证书和密钥对" class="headerlink" title="生成客户端证书和密钥对"></a>生成客户端证书和密钥对</h2><p>接下来将指导你生成一个客户端证书和密钥对。如果你有多个客户端，则可以为每个客户端重复这个过程。</p>
+<div class="tag-plugin colorful note" color="yellow"><div class="title">注意</div><div class="body"><p>每个客户端的名称都必须为唯一的</p></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">./easyrsa gen-req client1 nopass</span><br></pre></td></tr></table></figure>
+
+<p>接下来可以再创建一个目录，用于收集客户端所需文件，同样的，建议将该目录权限改为 700</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/client</span><br><span class="line">sudo <span class="built_in">chown</span> openvpn ~/client</span><br><span class="line"><span class="built_in">chmod</span> 700 ~/client</span><br></pre></td></tr></table></figure>
+
+<p>将刚刚生成的 client1.key 复制到该目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ~/easy-rsa/pki/private/client1.key ~/client</span><br></pre></td></tr></table></figure>
+
+<p>然后将 client1.req 文件传输到你的 CA Server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp pki/reqs/client1.req ca@your_ca_server_ip:/tmp</span><br></pre></td></tr></table></figure>
+
+<p>登录到 CA Server，然后进入 easy-rsa 目录，导入证书请求并签名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/easy-rsa</span><br><span class="line">./easyrsa import-req /tmp/client1.req client1</span><br><span class="line">./easarsa sign-req client client1</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="body"><p>这里你必须指定请求类型为客户端类型(client)</p></div></div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type the word &#x27;yes&#x27; to continue, or any other input to abort.</span><br><span class="line">Confirm request details: yes</span><br></pre></td></tr></table></figure>
+
+<p>若你对 CA 密钥进行了加密，你还需输入 CA 密钥的密码。</p>
+<p>接下来将生成的客户端证书文件传回服务器:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp pki/issued/client1.crt openvpn@your_server_ip:/tmp</span><br></pre></td></tr></table></figure>
+
+<p>然后将其移动到 client 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /tmp/client1.crt ~/client</span><br></pre></td></tr></table></figure>
+
+<p>最后 OpenVPN 客户端还需要 <code>ca.crt</code> 和 <code>ta.key</code> 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/openvpn/server/&#123;ca.crt,ta.key&#125; ~/client</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-OpenVPN-服务器"><a href="#配置-OpenVPN-服务器" class="headerlink" title="配置 OpenVPN 服务器"></a>配置 OpenVPN 服务器</h2><p>首先，复制样本server.conf文件做为您自己的配置文件的起点，并编辑它:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/openvpn/sample/sample-config-files/server.conf /etc/openvpn/server/</span><br><span class="line">sudo vi /etc/openvpn/server/server.conf</span><br></pre></td></tr></table></figure>
+
+<p>在文件底部添加下列内容，<code>#</code> 后面的是注释，请勿将其写入配置</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/openvpn/server/server.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">local 0.0.0.0</span><br><span class="line">port 1194    # 使用端口</span><br><span class="line">proto udp    # 使用协议</span><br><span class="line">dev tun      # 网卡名称</span><br><span class="line">ca ca.crt</span><br><span class="line">cert server.crt</span><br><span class="line">key server.key</span><br><span class="line">dh dh.pem</span><br><span class="line">server 10.8.0.0 255.255.255.0    # VPN网段及掩码</span><br><span class="line">ifconfig-pool-persist ipp.txt</span><br><span class="line">push &quot;route 10.8.0.0 255.255.255.0&quot;    # 流量转发，如需转发其它流量往下添加即可</span><br><span class="line">client-to-client</span><br><span class="line">keepalive 10 120</span><br><span class="line">tls-auth ta.key 0</span><br><span class="line">cipher AES-256-CBC</span><br><span class="line">comp-lzo</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">status openvpn-status.log</span><br><span class="line">verb 3</span><br></pre></td></tr></table></figure>
+
+<p>然后启动 OpenVPN Server 并开启自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start openvpn-server@server</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> openvpn-server@server</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin colorful note" color="cyan"><div class="body"><p>若你使用了防火墙，记得打开对应端口</p></div></div>
+
+<h2 id="配置客户端连接"><a href="#配置客户端连接" class="headerlink" title="配置客户端连接"></a>配置客户端连接</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>先安装 openvpn，如CentOS 8 &#x2F; Rocky 8:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install epel-release</span><br><span class="line">sudo dnf install openvpn</span><br></pre></td></tr></table></figure>
+
+<p>然后将 OpenVPN 服务端 client 目录中的 <code>ca.crt</code>、<code>ta.key</code>、<code>client.key</code>、<code>client.crt</code> 文件复制到客户端的 <code>/etc/openvpn/client</code> 目录。</p>
+<figure class="highlight bash"><figcaption><span>openvpn-server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/client/&#123;ca.crt,ta.key,client.key,client.crt&#125; client@your_client_ip:/tmp</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>openvpn-client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> /tmp/&#123;ca.crt,ta.key,client.key,client.crt&#125; /etc/openvpn/client/</span><br></pre></td></tr></table></figure>
+
+<p>接下来复制样本 client.conf 文件做为你自己的配置文件起点，并编辑它:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /usr/share/doc/openvpn/sample/sample-config-files/client.conf /etc/openvpn/client/</span><br><span class="line">sudo vi /etc/openvpn/client/client.conf</span><br></pre></td></tr></table></figure>
+
+<p>在文件底部添加下列内容，<code>#</code> 后面的是注释，请勿将其写入配置</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/openvpn/client/client.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">client</span><br><span class="line">dev tun    # 网卡名</span><br><span class="line">proto udp  # OpenVPN服务器使用的协议</span><br><span class="line">remote x.x.x.x 1194    # OpenVPN 服务器及端口</span><br><span class="line">resolv-retry infinite</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">remote-cert-tls server</span><br><span class="line">ca ca.crt</span><br><span class="line">cert client1.crt</span><br><span class="line">key client1.key</span><br><span class="line">tls-auth ta.key 1</span><br><span class="line">cipher AES-256-CBC</span><br><span class="line">comp-lzo</span><br><span class="line">verb 3</span><br></pre></td></tr></table></figure>
+
+<p>最后启动 OpenVPN Client 并设置开机自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start openvpn-client@client</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> openvpn-client@client</span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>首先前往 OpenVPN 官网下载 Windows 客户端应用</p>
+<div class="tag-plugin link dis-select"><a class="link-card plain" title="OpenVPN Client" href="https://openvpn.net/vpn-client/" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill=""><div class="left"><span class="title">OpenVPN Client</span><span class="cap link footnote">https://openvpn.net/vpn-client/</span></div><div class="right"><div class="lazy img" data-bg="https://bu.dusays.com/2022/03/25/1d687cdc60586.png"></div></div></a></div>
+
+<p>然后将 OpenVPN 服务端 client 目录中的 <code>ca.crt</code>、<code>ta.key</code>、<code>client.key</code>、<code>client.crt</code> 文件复制到 <code>C:\Users\自己的用户名\OpenVPN\config</code> 目录中</p>
+<p>接下来在该目录创建一个 <code>config.ovpn</code> 文件，并编辑它 (<code>#</code> 后面的是注释，请勿将其写入配置)</p>
+<figure class="highlight plaintext"><figcaption><span>config.ovpn</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">client</span><br><span class="line">dev tun    # 网卡名</span><br><span class="line">proto udp  # OpenVPN服务器使用的协议</span><br><span class="line">remote x.x.x.x 1194    # OpenVPN 服务器及端口</span><br><span class="line">resolv-retry infinite</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">remote-cert-tls server</span><br><span class="line">ca ca.crt</span><br><span class="line">cert client1.crt</span><br><span class="line">key client1.key</span><br><span class="line">tls-auth ta.key 1</span><br><span class="line">cipher AES-256-CBC</span><br><span class="line">comp-lzo</span><br><span class="line">verb 3</span><br></pre></td></tr></table></figure>
+
+<p>最后启动 OpenVPN Client 应用，右键任务栏托盘中的 OpenVPN 图标，点击 <code>连接</code>。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2022/03/25/8f80a869190df.png"></p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://colsrch.cn/posts/c5ed2e3f/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://colsrch.cn/posts/c5ed2e3f/&title=OpenVPN搭建教程 - Colsrch的小破站&pics=https://bu.dusays.com/2022/03/23/6740622fda3aa.png&summary=如何搭建和配置OpenVPN服务端及客户端"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=OpenVPN搭建教程 - Colsrch的小破站&amp;body=https://colsrch.cn/posts/c5ed2e3f/" rel="external nofollow noreferrer"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://colsrch.cn/posts/c5ed2e3f/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/posts/90c4210a/">Windows 使用技巧之我见</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/posts/4282b024/">Oh-My-Zsh 安装及美化</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="/posts/454fe87a/" title="Hexo 博客搭建教程"><span class="title">Hexo 博客搭建教程</span><span class="excerpt">Hexo搭建步骤</span></a></div></section></div>
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body artalk'>
+      
+
+<div id="artalk_container"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">探索</span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://madoka.colsrch.cn">Madoka</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html">开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/friends/">友链</a><a href="/about/#comments">留言板</a></div><div class="sitemap-group"><span class="fs15">关于</span><a href="/about/">关于本站</a><a href="/privacy/">隐私政策</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Colsrch">GitHub</a></div></div><div class="text"><p>Copyright © 2020-2024 Colsrch. All Rights Reserved.<br>本站使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://xaoxuu.com/wiki/stellar">Stellar</a> 作为主题 | 由 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/">Hexo</a> 强力驱动 | 由 腾讯云 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cdn">CDN</a> 分发<br>ICP 备案 &#x2F; 许可证号：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">赣 ICP 备 2020013616 号 - 2</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.beian.gov.cn/">赣公网安备 36082102000083 号</a></p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-text">使用 Docker 快速部署服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-text">启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-text">生成客户端配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-OpenVPN-%E5%92%8C-Easy-RSA"><span class="toc-text">安装 OpenVPN 和 Easy-RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS-8-x2F-Rocky-8"><span class="toc-text">CentOS 8 &#x2F; Rocky 8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-text">Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-easy-rsa"><span class="toc-text">配置 easy-rsa</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-OpenVPN-%E5%88%9B%E5%BB%BA-PKI"><span class="toc-text">为 OpenVPN 创建 PKI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-CA-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">配置 CA 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Diffie-Hellman"><span class="toc-text">创建 Diffie-Hellman</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAOpenVPN%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E8%AF%B7%E6%B1%82%E5%92%8C%E7%A7%81%E9%92%A5"><span class="toc-text">创建一个OpenVPN服务器证书请求和私钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E7%BD%B2-OpenVPN-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AF%81%E4%B9%A6%E8%AF%B7%E6%B1%82"><span class="toc-text">签署 OpenVPN 服务器的证书请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEOpenVPN%E5%8A%A0%E5%AF%86%E6%9D%90%E6%96%99"><span class="toc-text">配置OpenVPN加密材料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6%E5%92%8C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-text">生成客户端证书和密钥对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-OpenVPN-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">配置 OpenVPN 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-text">配置客户端连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function load_artalk() {
+    if (!document.querySelectorAll("#artalk_container")[0]) return;
+    utils.css('https://o.static.colsrch.cn/artalk/Artalk.css');
+    utils.js('https://o.static.colsrch.cn/artalk/Artalk.js', {defer: true}).then(function () {
+      const el = document.getElementById("artalk_container");
+      var path = el.getAttribute('comment_id');
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var artalk = new Artalk({
+        el: '#artalk_container',
+        pageKey: path,
+        pageTitle: 'OpenVPN搭建教程',
+        server: 'https://artalk.colsrch.cn',
+        placeholder: '自古评论出人才~',
+        site: 'Colsrch的小破站',
+        darkMode: 'auto',
+        pvEl: '#artalk_visitors',
+        
+        imgUploader: function(file) {
+          let headers = new Headers();
+          headers.set('Accept', 'application/json');
+          
+            headers.set('Authorization', 'Bearer 270|FjBcVa7CZ2nFsU9LPg7lN8YbcM29hlGiE8pwtLVq')
+          
+          let formData = new FormData();
+          formData.append('file', file);
+          return fetch('https://7bu.top/api/v1/upload',{
+            method: 'POST',
+            body: formData,
+            headers: headers
+            }).then((resp) => resp.json())
+              .then((resp) => resp.data.links.url)
+        },
+        
+        })
+      });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    load_artalk();
+  });
+</script>
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

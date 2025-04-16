@@ -1,0 +1,689 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Graia API：Graia API - Colsrch的小破站</title>
+
+  
+    <meta name="description" content="MessageChain1from graia.application.message.chain import MessageChain  用于处理消息的数据结构，包含一个有序列表  MessageChain.asDisplay()得到字符串形式的消息表示，返回字符串 MessageChain.root返回消息链列表 MessageChain.doc返回消息链的API文档说明 MessageCh">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Graia API">
+<meta property="og:url" content="https://colsrch.cn/notes/graia/">
+<meta property="og:site_name" content="Colsrch的小破站">
+<meta property="og:description" content="MessageChain1from graia.application.message.chain import MessageChain  用于处理消息的数据结构，包含一个有序列表  MessageChain.asDisplay()得到字符串形式的消息表示，返回字符串 MessageChain.root返回消息链列表 MessageChain.doc返回消息链的API文档说明 MessageCh">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-28T06:08:13.000Z">
+<meta property="article:modified_time" content="2024-03-12T09:58:18.000Z">
+<meta property="article:author" content="Colsrch">
+<meta property="article:tag" content="Colsrch">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="Colsrch">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Colsrch的小破站" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://o.static.colsrch.cn/image/favicon.png">
+  
+
+  
+
+  <link href="https://o.static.colsrch.cn/font/FZFWZhuZiAYuanJR.OTF" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Dosis-Medium.ttf" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Sxls.ttf" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="l_body s:aa index tech" id="start" layout="docs" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/notes/graia/"><div class="main" ff="title">Graia API</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" data-filter="/notes/graia/" placeholder="在 Graia API 中搜索..."></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item active" title="知识库" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/fcircle/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper post-card"><div class="widget-header dis-select"><span class="name">更多：笔记</span></div><div class="widget-body"><a class="item wiki" href="/notes/data-communication/"><span class="title">数据通信 - 笔记</span></a><a class="item wiki" href="/notes/kvm/"><span class="title">KVM 学习笔记</span></a><a class="item wiki" href="/notes/mysql/"><span class="title">MySQL 学习笔记</span></a><a class="item wiki" href="/notes/openstack/"><span class="title">OpenStack 搭建笔记</span></a><a class="item wiki" href="/notes/python/"><span class="title">Python 学习笔记</span></a><a class="item wiki" href="/notes/windows/"><span class="title">Windows - 笔记</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">文档</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/notes/graia/">Graia API</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">更新于：<time datetime="2024-03-12T09:58:18.000Z">2024-03-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Graia API</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="MessageChain"><a href="#MessageChain" class="headerlink" title="MessageChain"></a>MessageChain</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graia.application.message.chain <span class="keyword">import</span> MessageChain</span><br></pre></td></tr></table></figure>
+
+<p>用于处理消息的数据结构，包含一个有序列表</p>
+<ul>
+<li>MessageChain.asDisplay()<br>得到字符串形式的消息表示，返回字符串</li>
+<li>MessageChain.<strong>root</strong><br>返回消息链列表</li>
+<li>MessageChain.<strong>doc</strong><br>返回消息链的API文档说明</li>
+<li>MessageChain.<strong>- Module</strong><br>返回消息链的模块绝对引用</li>
+<li>MessageChain.create(&lt;list&#x2F;tuple&gt;)<br>创建一个消息链结构，其中list&#x2F;tuple可以包含能够获取的类型元素，返回创建的消息链</li>
+<li>MessageChain.isImmutable()<br>判断消息链是否为可变，可变返回True，不可变返回False，默认接受的消息为不可变</li>
+<li>MessageChain.asMutable()<br>将消息链转换为可变的，返回可变的消息链</li>
+<li>MessageChain.isSendable()<br>检查消息链是否可以被正确发送，可发送返回True，不可发送返回False</li>
+<li>MessageChain.asSendable()<br>将消息链转换为可以发送的新消息链，返回可能可以正确发送的消息链</li>
+<li>MessageChain.has(T)<br>消息链中是否存在某种消息元素，亦可使用<br>T in MessageChain<br>如果有则返回True否则返回False</li>
+<li>MessageChain.get(T)<br>取出消息链中某种消息元素，以列表方式返回<br>亦可以使用 <code>MessageChain[T]</code></li>
+<li>MessageChain.join(*MessageChains)<br>将多个MessageChain按顺序拼合“<br>返回拼合后的消息链</li>
+<li>MessageChain.plusWith(*MessageChain)<br>方法将在现有的基础上将另一消息链拼接到原来实例的尾部, 并生成, 返回新的实例; 该方法不改变原有和传入的实例.</li>
+<li>MessageChain.plus(*MessageChain)<br>方法将在现有的基础上将另一消息链拼接到原来实例的尾部; 该方法更改了原有的实例, 并要求 <code>isMutable</code> 方法返回 <code>True</code> 才可以执行.</li>
+<li>MessageChain.asSerializationString()<br>将消息链对象转为以 “Mirai 码” 表示特殊对象的字符串<br>返回字符串</li>
+<li>MessageChain.fromSerializationString(string)<br>将以 “Mirai 码” 表示特殊对象的字符串解析为消息链, 不过可能不完整<br>返回消息链，不可变</li>
+<li>MessageChain.asMerged()<br>把相邻的Plain元素合并为一个Plain元素</li>
+<li>MessageChain.subchain(slice)<br>切片操作<br>类似list切片方式<br>返回切片后的 MessageChain</li>
+<li>MessageChain.exclude(T)<br>将消息链中某种元素排除<br>返回新的消息链</li>
+<li>MessageChain.include(T)<br>只保留消息链中某种元素<br>返回新消息链</li>
+</ul>
+<h2 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graia.application.message.elements.internal <span class="keyword">as</span> Elements</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Elements.Plain(string)<br>实例化一个Plain元素，用于承载消息中的文字</p>
+</li>
+<li><p>Elements.Source<br>表示消息在一个特定聊天区域内的唯一标识，收到的消息链中存在，只能够获取</p>
+</li>
+<li><p>Elements.Quote(id,groupID,senderID,targetID,origin)<br>表示消息中回复功能，<br>id:回复的消息在群内的唯一标识，通过Elements.Source得到<br>groupID:群号<br>senderID:原消息发送人<br>targetID:群号<br>oringin:发送的消息链</p>
+<blockquote>
+<p>消息链中应该有：原消息链的**__root__列表, At(type&#x3D;‘At’,target&#x3D;qq号,display&#x3D;’@谁谁谁(群内id)’), Plain(’ ‘),Plain(“内容”)**</p>
+</blockquote>
+</li>
+<li><p>Elements.At(id)<br>表示@某人</p>
+</li>
+<li><p>Elements.AtAll()<br>管理员有效，@全体成员</p>
+</li>
+<li><p>Elements.Face(id)<br>表示一个表现，QQ内置的表情，id是表情的id</p>
+</li>
+<li><p>Elements.ImageType(Enum)<br>Friend &#x3D; “Friend”<br>Group &#x3D; “Group”<br>Temp &#x3D; “Temp”<br>Unknown &#x3D; “Unknow”<br>是一个类型的定义，不需要直接调用</p>
+</li>
+<li><p>Elements.Image()<br>imageID:是一个16进制字符串<br>url:链接位置<br>path<br>type:图片属于哪里(ImageType定义)<br><a href="#Image">关于Image的方法</a></p>
+</li>
+<li><p>Elements.FlashImage(Image)<br>发送闪照，需要先通过Image方法创建一个Image对象<br>亦可以直接 <code>Image.asFlash()</code></p>
+</li>
+<li><p>Elements.Xml(str)<br>xml消息</p>
+</li>
+<li><p>Elements.Json(str)</p>
+</li>
+<li><p>Elements.App(str)<br>app消息</p>
+</li>
+<li><p>Elements.PokeMethods(Enum)<br>是一个类型定义，不需要直接调用<br>Poke &#x3D; “Poke”<br>ShowLove &#x3D; “ShowLove”<br>Like &#x3D;“Like”<br>Heartbroken&#x3D;“Heartbroken”<br>SixSixSix&#x3D;“SixSixSix”<br>FangDaZhao &#x3D; “FangDaZhao”</p>
+</li>
+<li><p>Elements.Poke(PokeMethods)</p>
+</li>
+</ul>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graia.application.message.elements.internal <span class="keyword">import</span> Image</span><br></pre></td></tr></table></figure>
+
+<p><a href="#Elements">&gt; 返回到Elements</a></p>
+<ul>
+<li>Image.fromLoacalFile(filepath)<br>从本地获取一张图片<br>返回ShadowElement，包含了一个asFlash方法，可以作为闪照发送<br><code>Image.fromLocalFile(path).asFlash()</code></li>
+<li>Image.fromUnsafePath(filepath)<br>不检查路径安全性，让上层协议(mirai-api-http)处理图片文件</li>
+<li>Image.fromUnsafeBytes()<br>从不保证有效性的bytes中创建一个ShadowElement，并且上传，同样包含一个asFlash方法<br>不推荐，安全性低</li>
+<li>Image.fromNetworkAddress(url)<br>从不保证有效性的网络位置中创建一个ShadowElement，在发送的时候从url获得图片并且上传<br>可能抛出任何形式的网络错误<br>可以使用asFlash方法</li>
+<li>Image.fromUnsafeAddress(url)<br>让上层协议(mirai-apii-http)处理图片文件</li>
+<li>Image.asDisplay()<br>返回字符串”[图片]”</li>
+<li>Image.http_to_bytes(url)<br>从远端服务器获取图片的 bytes, 注意, 你无法获取并不包含 url 属性的本元素的 bytes</li>
+<li>Image.asFlash()<br>设为闪照发送</li>
+<li>Image.asSerializationString()<br>将消息链对象转为以 “Mirai 码” 表示特殊对象的字符串</li>
+</ul>
+<h2 id="Massages"><a href="#Massages" class="headerlink" title="Massages"></a>Massages</h2><p>定义了几种消息的类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graia.application.event.messages <span class="keyword">as</span> Messages</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>FriendMessage<br>好友对话事件</li>
+<li>GroupMessage<br>群对话事件</li>
+<li>TempMessage<br>临时对话事件</li>
+</ul>
+<h2 id="Friend模块"><a href="#Friend模块" class="headerlink" title="Friend模块"></a>Friend模块</h2><p>定义了friend的几种属性,需要在监听中声明</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graia.application.friend <span class="keyword">import</span> Friend</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>id:qq号</li>
+<li>nickname:昵称</li>
+<li><code>remark:好像访问不到？？</code></li>
+</ul>
+<h2 id="Group模块"><a href="#Group模块" class="headerlink" title="Group模块"></a>Group模块</h2><p>定义了group的一些属性,需要在监听中声明，例如：</p>
+<p><code>async def group_message_handler(app: GraiaMiraiApplication, message: MessageChain, group: Group,member: Member):</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graia.application.group <span class="keyword">as</span> Group</span><br></pre></td></tr></table></figure>
+
+<h3 id="Group-Group"><a href="#Group-Group" class="headerlink" title="Group.Group"></a>Group.Group</h3><ul>
+<li>Group.Group.id:群id</li>
+<li>Group.Group.name:群名称</li>
+<li>Group.Group.accountPerm:账号在群中的权限</li>
+</ul>
+<h3 id="Group-MemberPerm"><a href="#Group-MemberPerm" class="headerlink" title="Group.MemberPerm"></a>Group.MemberPerm</h3><p>作为字典枚举，并不需要主动调用</p>
+<ul>
+<li>.Member # 普通成员</li>
+<li>.Administrator # 管理员</li>
+<li>.Owner # 群主</li>
+</ul>
+<h3 id="Group-Member"><a href="#Group-Member" class="headerlink" title="Group.Member"></a>Group.Member</h3><p>描述用户在群组中所具备的有关状态，包括所在群组，群中昵称，所具备的权限，唯一的ID</p>
+<ul>
+<li>.id:说话人的QQ号</li>
+<li>.name:说话人的群昵称</li>
+<li>.permission:说话人的权限等级</li>
+<li>.group:上面的Group.Group所有内容</li>
+</ul>
+<h3 id="Group-GroupConfig"><a href="#Group-GroupConfig" class="headerlink" title="Group.GroupConfig"></a>Group.GroupConfig</h3><p>描述群内各项功能的设置(使用方法不明)</p>
+<ul>
+<li>name</li>
+<li>announcement</li>
+<li>confessTalk</li>
+<li>allowMemberInvite</li>
+<li>autoApprove</li>
+<li>anonymousChat</li>
+</ul>
+<h3 id="Group-MemberInfo"><a href="#Group-MemberInfo" class="headerlink" title="Group.MemberInfo"></a>Group.MemberInfo</h3><p>描述群组成员的可修改状态，修改需要权限(使用方法不明)</p>
+<ul>
+<li>name</li>
+<li>specialTitle</li>
+</ul>
+<h2 id="GraiaMiraiApplication类"><a href="#GraiaMiraiApplication类" class="headerlink" title="GraiaMiraiApplication类"></a>GraiaMiraiApplication类</h2><p>大多数的功能都被存在这个类中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graia.application <span class="keyword">import</span> GraiaMiraiApplication</span><br></pre></td></tr></table></figure>
+
+<h3 id="getVersion"><a href="#getVersion" class="headerlink" title=".getVersion()"></a>.getVersion()</h3><p>返回mirai-api-http的版本</p>
+<h3 id="getGroup-int"><a href="#getGroup-int" class="headerlink" title=".getGroup(int)"></a>.getGroup(int)</h3><p>返回对应群号的群组信息(为空则None)<br>id,name,accountPerm<br><code>print(app.getGroup(&lt;Id&gt;))</code></p>
+<h3 id="groupList"><a href="#groupList" class="headerlink" title=".groupList()"></a>.groupList()</h3><p><code>print(await app.groupList())</code></p>
+<h3 id="getMember-Group-int-member-int"><a href="#getMember-Group-int-member-int" class="headerlink" title=".getMember(Group int,member int)"></a>.getMember(Group int,member int)</h3><p>从已知群组和已知成员的id获得成员的信息</p>
+<p><code>print(await app.getMember(&lt;ID&gt;,&lt;ID&gt;))</code></p>
+<h3 id="memberList-Group-int"><a href="#memberList-Group-int" class="headerlink" title=".memberList(Group int)"></a>.memberList(Group int)</h3><p>从已知群组中获取群内所有成员的信息列表</p>
+<h3 id="friendList"><a href="#friendList" class="headerlink" title=".friendList()"></a>.friendList()</h3><p>获取所有好友的信息列表</p>
+<p><code>print(await app.friendList())</code></p>
+<h3 id="getFriend-int"><a href="#getFriend-int" class="headerlink" title=".getFriend(int)"></a>.getFriend(int)</h3><p>根据好友的id获取Friend实例</p>
+<h3 id="sendFriendMessage-Friend-MessageChain-quote"><a href="#sendFriendMessage-Friend-MessageChain-quote" class="headerlink" title=".sendFriendMessage(Friend,MessageChain[,quote])"></a>.sendFriendMessage(Friend,MessageChain[,quote])</h3><p>向好友发送消息,quote为回复信息断，可以选择</p>
+<h3 id="sendGroupMessage-Group-MessageChain-quote"><a href="#sendGroupMessage-Group-MessageChain-quote" class="headerlink" title=".sendGroupMessage(Group,MessageChain[,quote])"></a>.sendGroupMessage(Group,MessageChain[,quote])</h3><p>向群组发送消息</p>
+<h3 id="sendTempMessage-Group-x2F-ID-Member-x2F-ID-messageChain-quote"><a href="#sendTempMessage-Group-x2F-ID-Member-x2F-ID-messageChain-quote" class="headerlink" title=".sendTempMessage(Group&#x2F;ID,Member&#x2F;ID,messageChain[,quote])"></a>.sendTempMessage(Group&#x2F;ID,Member&#x2F;ID,messageChain[,quote])</h3><p>向群内成员发起临时会话</p>
+<h3 id="revokeMessage-target"><a href="#revokeMessage-target" class="headerlink" title=".revokeMessage(target)"></a>.revokeMessage(target)</h3><p>撤回消息(2min以内)</p>
+<p>target (Union[Source, BotMessage, int]): 特定信息的 <code>messageId</code>, 可以是 <code>Source</code> 实例, <code>BotMessage</code> 实例或者是单纯的 int 整数.</p>
+<h3 id="messageFromId-source-Source-int"><a href="#messageFromId-source-Source-int" class="headerlink" title=".messageFromId(source[Source, int])"></a>.messageFromId(source[Source, int])</h3><p>尝试从已知的 messageId 获取缓存中的消息</p>
+<h3 id="muteAll-group-amp-unmuteAll-group"><a href="#muteAll-group-amp-unmuteAll-group" class="headerlink" title=".muteAll(group)&amp;.unmuteAll(group)"></a>.muteAll(group)&amp;.unmuteAll(group)</h3><p>全员禁言</p>
+<h3 id="mute-group-member-time-、unmute-group-membder"><a href="#mute-group-member-time-、unmute-group-membder" class="headerlink" title=".mute(group,member,time)、unmute(group,membder)"></a>.mute(group,member,time)、unmute(group,membder)</h3><p>禁言指定群友</p>
+<p>time指禁言时长</p>
+<h3 id="kick-group-membder"><a href="#kick-group-membder" class="headerlink" title=".kick(group,membder)"></a>.kick(group,membder)</h3><p>群内踢掉某人</p>
+<h3 id="quit-group"><a href="#quit-group" class="headerlink" title=".quit(group)"></a>.quit(group)</h3><p>退群</p>
+</article>
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body artalk'>
+      
+
+<div id="artalk_container"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">探索</span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://madoka.colsrch.cn">Madoka</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html">开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/friends/">友链</a><a href="/about/#comments">留言板</a></div><div class="sitemap-group"><span class="fs15">关于</span><a href="/about/">关于本站</a><a href="/privacy/">隐私政策</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Colsrch">GitHub</a></div></div><div class="text"><p>Copyright © 2020-2024 Colsrch. All Rights Reserved.<br>本站使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://xaoxuu.com/wiki/stellar">Stellar</a> 作为主题 | 由 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/">Hexo</a> 强力驱动 | 由 腾讯云 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cdn">CDN</a> 分发<br>ICP 备案 &#x2F; 许可证号：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">赣 ICP 备 2020013616 号 - 2</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.beian.gov.cn/">赣公网安备 36082102000083 号</a></p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MessageChain"><span class="toc-text">MessageChain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Elements"><span class="toc-text">Elements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image"><span class="toc-text">Image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Massages"><span class="toc-text">Massages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Friend%E6%A8%A1%E5%9D%97"><span class="toc-text">Friend模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Group%E6%A8%A1%E5%9D%97"><span class="toc-text">Group模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-Group"><span class="toc-text">Group.Group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-MemberPerm"><span class="toc-text">Group.MemberPerm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-Member"><span class="toc-text">Group.Member</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-GroupConfig"><span class="toc-text">Group.GroupConfig</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-MemberInfo"><span class="toc-text">Group.MemberInfo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GraiaMiraiApplication%E7%B1%BB"><span class="toc-text">GraiaMiraiApplication类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getVersion"><span class="toc-text">.getVersion()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getGroup-int"><span class="toc-text">.getGroup(int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupList"><span class="toc-text">.groupList()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getMember-Group-int-member-int"><span class="toc-text">.getMember(Group int,member int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#memberList-Group-int"><span class="toc-text">.memberList(Group int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friendList"><span class="toc-text">.friendList()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getFriend-int"><span class="toc-text">.getFriend(int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sendFriendMessage-Friend-MessageChain-quote"><span class="toc-text">.sendFriendMessage(Friend,MessageChain[,quote])</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sendGroupMessage-Group-MessageChain-quote"><span class="toc-text">.sendGroupMessage(Group,MessageChain[,quote])</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sendTempMessage-Group-x2F-ID-Member-x2F-ID-messageChain-quote"><span class="toc-text">.sendTempMessage(Group&#x2F;ID,Member&#x2F;ID,messageChain[,quote])</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#revokeMessage-target"><span class="toc-text">.revokeMessage(target)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#messageFromId-source-Source-int"><span class="toc-text">.messageFromId(source[Source, int])</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#muteAll-group-amp-unmuteAll-group"><span class="toc-text">.muteAll(group)&amp;.unmuteAll(group)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mute-group-member-time-%E3%80%81unmute-group-membder"><span class="toc-text">.mute(group,member,time)、unmute(group,membder)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kick-group-membder"><span class="toc-text">.kick(group,membder)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#quit-group"><span class="toc-text">.quit(group)</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function load_artalk() {
+    if (!document.querySelectorAll("#artalk_container")[0]) return;
+    utils.css('https://o.static.colsrch.cn/artalk/Artalk.css');
+    utils.js('https://o.static.colsrch.cn/artalk/Artalk.js', {defer: true}).then(function () {
+      const el = document.getElementById("artalk_container");
+      var path = el.getAttribute('comment_id');
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var artalk = new Artalk({
+        el: '#artalk_container',
+        pageKey: path,
+        pageTitle: 'Graia API',
+        server: 'https://artalk.colsrch.cn',
+        placeholder: '自古评论出人才~',
+        site: 'Colsrch的小破站',
+        darkMode: 'auto',
+        pvEl: '#artalk_visitors',
+        
+        imgUploader: function(file) {
+          let headers = new Headers();
+          headers.set('Accept', 'application/json');
+          
+            headers.set('Authorization', 'Bearer 270|FjBcVa7CZ2nFsU9LPg7lN8YbcM29hlGiE8pwtLVq')
+          
+          let formData = new FormData();
+          formData.append('file', file);
+          return fetch('https://7bu.top/api/v1/upload',{
+            method: 'POST',
+            body: formData,
+            headers: headers
+            }).then((resp) => resp.json())
+              .then((resp) => resp.data.links.url)
+        },
+        
+        })
+      });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    load_artalk();
+  });
+</script>
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

@@ -1,0 +1,606 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Hexo 添加说说页面 - Colsrch的小破站</title>
+
+  
+    <meta name="description" content="给自己的网站中添加说说页面，类似于qq空间一样">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 添加说说页面">
+<meta property="og:url" content="https://colsrch.cn/posts/a058b502/">
+<meta property="og:site_name" content="Colsrch的小破站">
+<meta property="og:description" content="给自己的网站中添加说说页面，类似于qq空间一样">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2020/08/12/85825a2684528.png">
+<meta property="og:image" content="https://bu.dusays.com/2020/08/12/61907e654e662.png">
+<meta property="og:image" content="https://bu.dusays.com/2020/08/12/98c7e1c348727.png">
+<meta property="og:image" content="https://bu.dusays.com/2020/08/12/8bc63e6b295c1.png">
+<meta property="og:image" content="https://bu.dusays.com/2020/08/12/bef6cde2d853e.png">
+<meta property="article:published_time" content="2020-08-12T10:05:32.000Z">
+<meta property="article:modified_time" content="2024-03-12T09:58:18.000Z">
+<meta property="article:author" content="Colsrch">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bu.dusays.com/2020/08/12/85825a2684528.png">
+  
+  
+  
+  <meta name="keywords" content="Hexo">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Colsrch的小破站" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+    <link rel="shortcut icon" href="https://o.static.colsrch.cn/image/favicon.png">
+  
+
+  
+
+  <link href="https://o.static.colsrch.cn/font/FZFWZhuZiAYuanJR.OTF" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Dosis-Medium.ttf" rel="stylesheet"><link href="https://o.static.colsrch.cn/font/Sxls.ttf" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://bu.dusays.com/2021/09/26/71936251686ac.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Colsrch的小破站</div><div class="sub normal cap">主题迁移中</div><div class="sub hover cap" style="opacity:0"> colsrch.cn</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="知识库" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/fcircle/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span><a class="cap-action" id="rss" title="Subscribe" href="/atom.xml"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19q0-.825.588-1.412T5 17q.825 0 1.413.588T7 19q0 .825-.587 1.413T5 21m13.5 0q-.65 0-1.088-.475T16.9 19.4q-.275-2.425-1.312-4.537T12.9 11.1q-1.65-1.65-3.762-2.687T4.6 7.1q-.65-.075-1.125-.512T3 5.5q0-.65.45-1.062t1.075-.363q3.075.275 5.763 1.563t4.737 3.337q2.05 2.05 3.338 4.738t1.562 5.762q.05.625-.363 1.075T18.5 21m-6 0q-.625 0-1.075-.437T10.85 19.5q-.225-1.225-.787-2.262T8.65 15.35q-.85-.85-1.888-1.412T4.5 13.15q-.625-.125-1.062-.575T3 11.5q0-.65.45-1.075t1.075-.325q1.825.25 3.413 1.063t2.837 2.062q1.25 1.25 2.063 2.838t1.062 3.412q.1.625-.325 1.075T12.5 21"/></svg></a></div><div class="widget-body fs14"><a class="item title" href="/posts/c5ed2e3f/"><span class="title">OpenVPN搭建教程</span></a><a class="item title" href="/posts/caff8000/"><span class="title">Git 常用命令</span></a><a class="item title" href="/posts/454fe87a/"><span class="title">Hexo 博客搭建教程</span></a><a class="item title" href="/posts/a5b8d333/"><span class="title">Hexo常用指令</span></a><a class="item title" href="/posts/df35c5b1/"><span class="title">Coding持续集成实现Hexo自动化部署</span></a><a class="item title" href="/posts/986192a4/"><span class="title">C语言神秘程序</span></a><a class="item title" href="/posts/5fe8cd16/"><span class="title">VS2019 及其他版本序列号及下载地址</span></a><a class="item title" href="/posts/da1d5c8b/"><span class="title">LeanCLoud定时唤醒失败的解决方案</span></a><a class="item title" href="/posts/32c8ba21/"><span class="title">博客访问速度提升：使用hexo-offline-popup插件</span></a><a class="item title" href="/posts/a058b502/"><span class="title">Hexo 添加说说页面</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></div>
+<div class="flex-row" id="post-meta"><a class="author" href="/author/colsrch/">Colsrch</a><span class="sep"></span><span class="text created"><time datetime="2020-08-12T10:05:32.000Z">2020-08-12</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-12T09:58:18.000Z">2024-03-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Hexo 添加说说页面</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><div class="tag-plugin colorful note" color="green"><div class="body"><p>给自己的网站中添加说说页面，类似于qq空间一样</p></div></div>
+
+<span id="more"></span>
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="🤞使用方便"><a href="#🤞使用方便" class="headerlink" title="🤞使用方便"></a>🤞使用方便</h3><p>简略的html片段即可实现，且理论上支持任何框架或单独页面。</p>
+<h3 id="🔐安全性高"><a href="#🔐安全性高" class="headerlink" title="🔐安全性高"></a>🔐安全性高</h3><p>直接通过leancloud的用户系统，保证只有站长可控发布权限。</p>
+<h3 id="🎁多功能输入"><a href="#🎁多功能输入" class="headerlink" title="🎁多功能输入"></a>🎁多功能输入</h3><p>多功能输入框，满足你的一切需求，并且支持点赞~</p>
+<h3 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h3><p>若你的主题与本主题一样为<code>Volantis</code>，则可以直接使用<code>Artitalk</code>,直接前往最下面的<a href="#%E5%9C%A8Volantis%E4%B8%BB%E9%A2%98%E4%B8%AD%E4%BD%BF%E7%94%A8">在Volantis主题中使用</a>查看教程。</p>
+<hr>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><h3 id="Leancloud的相关准备"><a href="#Leancloud的相关准备" class="headerlink" title="Leancloud的相关准备"></a>Leancloud的相关准备</h3><blockquote>
+<p>🌍 使用国际版的leancloud<br><br>因为leancloud的国内节点需要接入备案域名作为安全域名。明显违背了适用性强的理念。这里推荐大家使用国际版，当然国内版的也可以，但是不要忘了填写severurl即可。</p>
+</blockquote>
+<p>前往 leancloud 国际版，注册账号。</p>
+<div class="tag-plugin timeline"><div class="timenode" index="0"><div class="header">注册国际版Leancloud账号</div><div class="body fs14"><p>前往<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leancloud.app/">leancloud国际版</a>，注册账号。</p></div></div><div class="timenode" index="1"><div class="header">绑定手机号和邮箱</div><div class="body fs14"><p>注册完成之后根据leancloud的提示绑定手机号和邮箱</p></div></div><div class="timenode" index="2"><div class="header">创建应用</div><div class="body fs14"><p>创建一个<code>开发版</code>应用，应用名称不限</p><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2020/08/12/85825a2684528.png"></p></div></div><div class="timenode" index="3"><div class="header">添加用户</div><div class="body fs14"><p>打开这个应用，选择<code>存储</code>→<code>用户</code>→<code>添加用户</code></p><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2020/08/12/61907e654e662.png"></p><p>填写用户名和密码（不推荐使用中文哦）<psw>记住这个密码，以后发表说说需要用这个用户名和密码登陆的</psw></p><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2020/08/12/98c7e1c348727.png"></p></div></div><div class="timenode" index="4"><div class="header">配置头像</div><div class="body fs14"><p>回到<code>结构化数据</code>中，点击<code>class</code>下的<code>_User</code>，选择<code>添加列</code>。</p><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2020/08/12/8bc63e6b295c1.png"></p><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2020/08/12/bef6cde2d853e.png"></p></div></div><div class="timenode" index="5"><div class="header">新建Class</div><div class="body fs14"><p>在结构化数据中创建<code>class</code>，命名为<code>shuoshuo</code>。</p><p><psw>注意一定要命名为shuoshuo哦</psw></p><div class="tag-plugin colorful note" color="yellow"><div class="title">Artitalk</div><div class="body"><p>3.1.0版本后拥有了说说评论功能，请在结构化数据中再创建一个<code>class</code>，命名为<code>atComment</code>。</p></div></div></div></div><div class="timenode" index="6"><div class="header">设置权限</div><div class="body fs14"><ul><li>设置<code>_User</code> class 权限</li></ul><p>将<code>_User</code>中的权限全部调为指定用户（这个用户就是你新建的那个用户），或者数据创建者，为了保证不被篡改用户数据已达到强制发布说说。</p><ul><li>设置<code>shuoshuo</code> class 权限</li></ul><p>点击<code>class</code>下的<code>shuoshuo</code>。找到 <code>权限</code> ，在<code>Class</code>访问权限中将<code>add_fields</code>以及<code>create</code>权限设置为 <code>指定用户</code> ，输入你刚才输入的用户名会自动匹配。为了安全起见，将<code>delete</code>和<code>update</code>也设置为跟它们一样的权限。</p><div class="tag-plugin colorful note" color="red"><div class="body"><p>设置权限的这几步一定要设置好，才可以保证不被“闲人”破解发布说说的验证</p></div></div></div></div></div>
+
+<h3 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h3><ol>
+<li>新建一个<code>page</code>页面。</li>
+<li>如果使用<code>Valine</code>评论系统，请关闭该页面的评论功能</li>
+<li>将下方代码直接复制进去<details class="tag-plugin colorful folding" color="green"><summary><span>点击查看代码</span></summary><div class="body"><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/artitalk&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;artitalk_main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">new</span> <span class="title class_">Artitalk</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">appId</span>: <span class="string">&#x27;输入你的appid&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">appKey</span>: <span class="string">&#x27;输入你的appkey&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pageSize</span>: <span class="number">5</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">shuoPla</span>: <span class="string">&#x27;想说点啥呢~&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">atEmoji</span>: &#123;  <span class="comment">//xaoxuu表情</span></span></span><br><span class="line"><span class="language-javascript">                  weibo-<span class="attr">doge</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/weibo/weibo-1.png&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  weibo-doge-<span class="attr">tuosai</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/weibo/weibo-2.png&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  weibo-doge-<span class="attr">shengqi</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/weibo/weibo-3.png&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  weibo-doge-<span class="attr">tushe</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/weibo/weibo-4.png&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">1</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-1.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">2</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-2.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">3</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-3.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">4</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-4.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">5</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-5.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">6</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-6.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">7</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-7.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">8</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-8.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">9</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-9.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">10</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-10.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">11</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-11.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">12</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-12.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">13</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-13.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">14</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-14.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">15</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-15.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">16</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-16.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">17</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-17.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">18</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-18.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">19</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-19.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">20</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-20.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">21</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-21.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">22</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-22.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">23</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-23.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">24</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-24.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">25</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-25.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">26</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-26.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">27</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-27.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">28</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-28.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">29</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-29.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">30</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-30.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">31</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-31.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">32</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-32.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">33</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-33.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">34</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-34.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">35</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-35.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">36</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-36.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">37</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-37.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">38</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-38.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">39</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-39.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">40</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-40.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">41</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-41.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">42</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-42.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">43</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-43.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">44</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-44.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">45</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-45.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">46</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-46.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">47</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-47.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">48</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-48.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">49</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-49.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">50</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-50.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">51</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-51.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">52</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-52.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">53</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-53.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">54</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-54.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">55</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-55.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">56</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-56.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">57</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-57.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">58</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-58.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">59</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-59.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">60</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-60.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">61</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-61.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">62</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-62.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">63</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-63.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">64</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-64.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">65</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-65.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">66</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-66.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">67</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-67.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">68</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-68.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">69</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-69.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">70</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-70.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">71</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-71.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">72</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-72.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">73</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-73.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">74</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-74.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">75</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-75.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">76</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-76.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">77</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-77.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">78</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-78.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">79</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-79.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">80</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-80.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">81</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-81.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">82</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-82.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">83</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-83.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">84</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-84.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">85</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-85.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">86</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-86.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">87</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-87.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">88</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-88.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">89</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-89.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">90</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-90.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">91</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-91.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">92</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-92.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">93</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-93.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">94</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-94.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">95</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-95.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">96</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-96.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">97</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-97.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">98</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-98.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">99</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-99.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">100</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-100.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">101</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-101.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">102</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-102.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">103</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-103.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">104</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-104.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">105</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-105.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">106</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-106.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">107</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-107.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">108</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-108.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">109</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-109.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">110</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-110.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">111</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-111.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">112</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-112.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">113</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-113.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">114</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-114.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">115</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-115.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                  aru-<span class="number">116</span>: <span class="string">&quot;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/aru/aru-116.gif&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div></details></li>
+<li>修改里面的<code>appId</code>和<code>appKey</code></li>
+<li>执行<code>hexo s</code>测试下能不能正常使用吧</li>
+<li>其他相关配置及说明请前往<code>Artitalk</code>文档查看哦~</li>
+</ol>
+<h2 id="在Volantis主题中使用"><a href="#在Volantis主题中使用" class="headerlink" title="在Volantis主题中使用"></a>在Volantis主题中使用</h2><blockquote>
+<p>请先完成<a href="#Leancloud%E7%9A%84%E7%9B%B8%E5%85%B3%E5%87%86%E5%A4%87">Leancloud的相关准备</a></p>
+</blockquote>
+<h3 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h3><ol>
+<li>新建一个page页面</li>
+<li>修改layout为<code>artitalk</code></li>
+<li>在主题配置文件中配置相关项即可</li>
+<li>在主题配置文件中的<code>pjax.banUrl</code>中添加该说说页面的链接</li>
+<li>是不是炒鸡简单鸭</li>
+<li>关于<code>Volantis</code>主题的使用及在<code>Volantis</code>使用<code>Artitalk</code>的疑问都可以来群里问哦~</li>
+<li>QQ群：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://volantis.js.org/contributors/#%E5%8F%AF%E4%BE%9B%E4%BA%A4%E6%B5%81%E7%9A%84%E6%B8%A0%E9%81%93">1146399464</a>点击群号码查看加群方法。</li>
+</ol>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://colsrch.cn/posts/a058b502/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://colsrch.cn/posts/a058b502/&title=Hexo 添加说说页面 - Colsrch的小破站&pics=https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png&summary=给自己的网站中添加说说页面，类似于qq空间一样"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=Hexo 添加说说页面 - Colsrch的小破站&amp;body=https://colsrch.cn/posts/a058b502/" rel="external nofollow noreferrer"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://colsrch.cn/posts/a058b502/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/posts/72bb5148/">如何给博客添加弹窗通知</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/posts/56951997/">博客访问速度提升：最佳线路分流</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="/posts/454fe87a/" title="Hexo 博客搭建教程"><span class="title">Hexo 博客搭建教程</span><span class="excerpt">Hexo搭建步骤</span></a><a class="item" href="/posts/a5b8d333/" title="Hexo常用指令"><span class="title">Hexo常用指令</span><span class="excerpt">本篇仅介绍Hexo常用指令及Hexo博客搭建过程中使用的命令，需要完整教程请转至上篇Hexo博客搭建教程（全）</span></a><a class="item" href="/posts/5f073d29/" title="利用腾讯Cloud Studio云端使用hexo"><span class="title">利用腾讯Cloud Studio云端使用hexo</span><span class="excerpt">本篇介绍hexo如何在云端部署，它可以让您无需电脑，无需安装Git、nodejs等便可编写hexo文章并配置hexo。你在本地可以做的操作，云端都可以做到</span></a><a class="item" href="/posts/df35c5b1/" title="Coding持续集成实现Hexo自动化部署"><span class="title">Coding持续集成实现Hexo自动化部署</span><span class="excerpt">Hexo 有个缺点，因为是使用 Node.js 编写的，如果文件多的话，生成、部署不可避免地会非常慢</span></a><a class="item" href="/posts/467014d7/" title="MFC中CListCtrl的Report基本用法"><span class="title">MFC中CListCtrl的Report基本用法</span><span class="excerpt">第一步就是添加ClistCtrl控件，然后为其添加变量，此处我们将其变量设为</span></a></div></section></div>
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body artalk'>
+      
+
+<div id="artalk_container"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">探索</span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://madoka.colsrch.cn">Madoka</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html">开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/friends/">友链</a><a href="/about/#comments">留言板</a></div><div class="sitemap-group"><span class="fs15">关于</span><a href="/about/">关于本站</a><a href="/privacy/">隐私政策</a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Colsrch">GitHub</a></div></div><div class="text"><p>Copyright © 2020-2024 Colsrch. All Rights Reserved.<br>本站使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://xaoxuu.com/wiki/stellar">Stellar</a> 作为主题 | 由 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/">Hexo</a> 强力驱动 | 由 腾讯云 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/product/cdn">CDN</a> 分发<br>ICP 备案 &#x2F; 许可证号：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">赣 ICP 备 2020013616 号 - 2</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.beian.gov.cn/">赣公网安备 36082102000083 号</a></p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%9E%E4%BD%BF%E7%94%A8%E6%96%B9%E4%BE%BF"><span class="toc-text">🤞使用方便</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%90%E5%AE%89%E5%85%A8%E6%80%A7%E9%AB%98"><span class="toc-text">🔐安全性高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8E%81%E5%A4%9A%E5%8A%9F%E8%83%BD%E8%BE%93%E5%85%A5"><span class="toc-text">🎁多功能输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8"><span class="toc-text">快速使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8"><span class="toc-text">开始使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Leancloud%E7%9A%84%E7%9B%B8%E5%85%B3%E5%87%86%E5%A4%87"><span class="toc-text">Leancloud的相关准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="toc-text">博客配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Volantis%E4%B8%BB%E9%A2%98%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">在Volantis主题中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-text">配置方法</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+  <script>
+  function load_artalk() {
+    if (!document.querySelectorAll("#artalk_container")[0]) return;
+    utils.css('https://o.static.colsrch.cn/artalk/Artalk.css');
+    utils.js('https://o.static.colsrch.cn/artalk/Artalk.js', {defer: true}).then(function () {
+      const el = document.getElementById("artalk_container");
+      var path = el.getAttribute('comment_id');
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var artalk = new Artalk({
+        el: '#artalk_container',
+        pageKey: path,
+        pageTitle: 'Hexo 添加说说页面',
+        server: 'https://artalk.colsrch.cn',
+        placeholder: '自古评论出人才~',
+        site: 'Colsrch的小破站',
+        darkMode: 'auto',
+        pvEl: '#artalk_visitors',
+        
+        imgUploader: function(file) {
+          let headers = new Headers();
+          headers.set('Accept', 'application/json');
+          
+            headers.set('Authorization', 'Bearer 270|FjBcVa7CZ2nFsU9LPg7lN8YbcM29hlGiE8pwtLVq')
+          
+          let formData = new FormData();
+          formData.append('file', file);
+          return fetch('https://7bu.top/api/v1/upload',{
+            method: 'POST',
+            body: formData,
+            headers: headers
+            }).then((resp) => resp.json())
+              .then((resp) => resp.data.links.url)
+        },
+        
+        })
+      });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    load_artalk();
+  });
+</script>
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
